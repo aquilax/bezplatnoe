@@ -1,0 +1,32 @@
+{% if heading %}<h2>{{heading}}</h2>{% endif %}
+
+<p>
+<form action="http://www.bezplatnoe.com/search" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-5312778245695320:16lfi8itjs0" />
+    <input type="hidden" name="cof" value="FORID:11" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" size="40" />
+    <input type="submit" name="sa" value="&#x0422;&#x044a;&#x0440;&#x0441;&#x0435;&#x043d;&#x0435;" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.bg/cse/brand?form=cse-search-box&amp;lang=bg"></script>
+</p>
+
+{% if items %}
+  <ul class="list">
+  {% for item in items%}
+    <li>
+      <h3><a href="/post/{{item.key.id}}/{{item.slug}}">{{item.title}}</a></h3>
+      <div class="text">{{item.text|striptags|truncatewords:25}}</div>
+      <div class="pnav"><a href="/c/{{item.main.key.id}}/{{item.main.slug}}">{{item.main.name}}</a> &raquo; <a href="/sub/{{item.sub.key.id}}/{{item.main.slug}}/{{item.sub.slug}}">{{item.sub.name}}</a>
+      | <span class="votes_count" id="votes_count{{item.key.id}}"> Рейтинг: {{item.score}} </span>
+      <span class="vote_buttons" id="vote_buttons{{item.key.id}}">
+        <a href="javascript:;" class="vote_up" rel="{{item.key.id}}">Супер е</a>
+        <a href="javascript:;" class="vote_down" rel="{{item.key.id}}">Не става</a>
+      </span>
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}

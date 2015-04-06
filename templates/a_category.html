@@ -1,0 +1,9 @@
+<form method="post" action="/admin/category">
+<select name="main_id">
+<option value="0">--Избор--</option>
+{% for row in main%}<option value="{{row.key.id}}">{{row.name}}</option>{% endfor %}
+</select>
+<input name="main_name" value=""/>
+<input name="sub_name" value=""/>
+<input type="submit">
+</form>

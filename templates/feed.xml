@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ title }}</title>
+    <link>http://www.bezplatnoe.com</link>
+    <description>Безплатни програми, игри, картинки, SMS-и и други безплатни неща в Интернет</description>
+    <pubDate>{{ last_updated|date:"D, d M Y H:i:s T" }}</pubDate>
+    {% for item in items %}<item>
+      <title>{{ item.title }}</title>
+      <link>http://www.bezplatnoe.com/post/{{item.key.id}}/{{item.slug}}</link>
+      <guid>http://www.bezplatnoe.com/post/{{item.key.id}}/{{item.slug}}</guid>
+      <pubDate>{{ item.created|date:"D, d M Y H:i:s T" }}</pubDate>
+      <description>
+        {{ item.text|striptags|truncatewords:100|escape }}
+      </description>
+      <author>aquilax@bezplatnoe.com</author>
+    </item>{% endfor %}
+  </channel>
+</rss>

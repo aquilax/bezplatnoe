@@ -1,0 +1,47 @@
+<h2> <a href="/out/{{item.key.id}}">{{item.title}}</a></h2>
+{% if item.image %}<img src="{{item.image}}" alt="{{item.title}}" />{% endif %}
+<div class="text">{{item.text}}</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5312778245695320";
+/* 468x60, created 9/22/10 */
+google_ad_slot = "0678346973";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<div class="pnav"><a href="/c/{{item.main.key.id}}/{{item.main.slug}}">{{item.main.name}}</a> &raquo; <a href="/sub/{{item.sub.key.id}}/{{item.main.slug}}/{{item.sub.slug}}">{{item.sub.name}}</a>
+| <span class="votes_count" id="votes_count{{item.key.id}}"> Рейтинг: {{item.score}} </span>
+<span class="vote_buttons" id="vote_buttons{{item.key.id}}">
+  <a href="javascript:;" class="vote_up" rel="{{item.key.id}}">Супер е</a>
+  <a href="javascript:;" class="vote_down" rel="{{item.key.id}}">Не става</a>
+</span>
+</div>
+<div class="url"><b>Връзка:</b> <a href="/out/{{item.key.id}}">{{item.url}}</a></div>
+{% if item.keywords %}<div id="keywords"><b>Ключови думи:</b> {{item.keywords}}</div>{% endif %}
+
+<h3>Коментари</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://bezplatnoe.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=bezplatnoe">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script type="text/javascript">
+var disqus_shortname = 'bezplatnoe';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/bezplatnoe/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>

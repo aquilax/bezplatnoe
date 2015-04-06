@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+	<title>{{title}}</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+	<meta name="description" content="Безплатни програми, игри, картинки, SMS-и и други безплатни неща в Интернет." />
+	<meta name="keywords" content="програми, игри, хостинг, блогове, сваляне, sms" />
+	<meta name="robots" content="index, follow" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen" />
+  <link rel="alternate" type="application/rss+xml" title="Най-нови обяви" href="http://feeds.feedburner.com/bezplatnoe" />
+  <script type="text/javascript">
+    window.google_analytics_uacct = "UA-115818-55";
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-115818-55']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+<body>
+<div id="header">
+	<h1><a href="/">Безплатно е</a></h1>
+	<p>Безплатни програми, игри, картинки, SMS-и и други безплатни неща в Интернет.</p>
+{% if maincat %}
+  <ul>{% for mc in maincat %}
+    {% ifequal mc.key.id mainid %}
+      <li><a class="active" href="/c/{{mc.key.id}}/{{mc.slug}}">{{mc.name}}</a></li>
+    {% else %}
+      <li><a href="/c/{{mc.key.id}}/{{mc.slug}}">{{mc.name}}</a></li>
+    {% endifequal %}
+  {% endfor %}
+    <li><a class="forum" href="/forum">Форум</a></li>
+  </ul>
+{% endif %}
+	<p id="layoutdims">&nbsp;</p>
+</div>
+<div class="colmask blogstyle">
+	<div class="colmid">
+		<div class="colleft">
+			<div class="col1">
+				<!-- Column 1 start -->
+{% include content %}
+				<!-- Column 1 end -->
+			</div>
+			<div class="col2">
+				<!-- Column 2 start -->
+{% if subcat %}
+          <ul>{% for sc in subcat%}
+    {% ifequal sc.key.id subid %}
+      <li>&larr; <a href="/sub/{{sc.key.id}}/{{sc.main.slug}}/{{sc.slug}}">{{sc.name}}</a></li>
+    {% else %}
+      <li><a href="/sub/{{sc.key.id}}/{{sc.main.slug}}/{{sc.slug}}">{{sc.name}}</a></li>
+    {% endifequal %}
+  {% endfor %}</ul>
+{% else %}
+  <div class="bnr">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-5312778245695320";
+    /* 160x600, created 9/21/10 */
+    google_ad_slot = "5539579044";
+    google_ad_width = 160;
+    google_ad_height = 600;
+    //-->
+    </script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+  </div>
+{% endif %}
+        <!-- Column 2 end -->
+			</div>
+			<div class="col3">
+				<!-- Column 3 start -->
+  <div class="bnr">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-5312778245695320";
+    /* 160x600, created 9/21/10 */
+    google_ad_slot = "5539579044";
+    google_ad_width = 160;
+    google_ad_height = 600;
+    //-->
+    </script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+  </div>
+				<!-- Column 3 end -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<p>Всичко безплатно пристига до вас благодарение на Google
+  <span class="fr">
+    <a href="http://bgtop.net/in.php/1285485666" target="_blank"><img src="/img/bgtop8831.gif" alt="BGtop"  border="0" /></a>
+  <!-- Web Counter code start -->
+<script type="text/javascript"><!--
+_d=document; _n=navigator; _t=new Date(); function t() { _d.write(
+"<img src=\"http://counter.search.bg/cgi-bin/c?_id=bzpltnoe&_z=0&_r="+
+_r+"&_c="+_c+"&_j="+_j+"&_t="+(_t.getTimezoneOffset())+"&_k="+_k+
+"&_l="+escape(_d.referrer)+"\" width=70 height=15 "+
+"border=0>");} _c="0"; _r="0"; _j="U"; _k="U"; _d.cookie="_c=y";
+_d.cookie.length>0?_k="Y":_k="N";//--></script>
+<script type="text/javascript"><!--
+_b=screen; _r=_b.width; _n.appName!="Netscape"?_c=_b.colorDepth : _c=_b.pixelDepth;
+_n.javaEnabled()?_j="Y":_j="N";//--></script>
+<a href="http://counter.search.bg/cgi-bin/s?_id=bzpltnoe"><script type="text/javascript"><!--
+t(); //--></script></a>
+<!-- Web Counter code end -->
+<a href="http://bgchart.net/in/17745" target="_blank">БГ чарт</a>
+  </span>
+  <img src="http://topsitecounter.appspot.com/t" alt="Top Site Counter" width="1" height="1" />
+  </p>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/vote.js"></script></head>
+</body>
+</html>

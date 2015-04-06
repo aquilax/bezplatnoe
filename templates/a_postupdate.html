@@ -1,0 +1,39 @@
+<script type="text/javascript" src="/js/js_quicktags.js"></script>
+<form method="post" action="/admin/update/{{item.key.id}}">
+<table>
+  <tr>
+    <td>Категория</td>
+    <td>
+      {{item.main.name}} &raquo; {{item.sub.name}}
+      <select name="subcat">
+{% for row in sc%}<option value="{{row.key.id}}">{{row.main.name}} - {{row.name}}</option>{% endfor %}
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Заглавие</td>
+    <td><input name="title" value="{{item.title}}"/></td>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td><input name="url" value="{{item.url}}"/></td>
+  </tr>
+  <tr>
+    <td>Картинка</td>
+    <td><input name="image" value="{{item.image}}"/></td>
+  </tr>
+  <tr>
+    <td>Ключови думи</td>
+    <td><input name="keywords" value="{{item.keywords}}"/></td>
+  </tr>
+  <tr>
+    <td>Текст</td>
+    <td>
+      <script type="text/javascript">edToolbar();</script>
+      <textarea id="text" rows="10" cols="80" name="text">{{item.text}}</textarea>
+    </td>
+  </tr>
+</table>
+<input type="submit" value="Update"/>
+</form>
+<script type="text/javascript">var edCanvas = document.getElementById('text');</script>

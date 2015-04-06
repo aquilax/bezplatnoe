@@ -1,0 +1,11 @@
+{% if items %}
+  <ul class="list">
+  {% for item in items%}
+    <li>
+      <h3><a href="/admin/update/{{item.key.id}}">{{item.title}}</a></h3>
+      <div class="text">{{item.text}}</div>
+      <div class="pnav"><a href="/c/{{item.main.key.id}}/{{item.main.slug}}">{{item.main.name}}</a> &raquo; <a href="/sub/{{item.sub.key.id}}/{{item.main.slug}}/{{item.sub.slug}}">{{item.sub.name}}</a></div>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}
