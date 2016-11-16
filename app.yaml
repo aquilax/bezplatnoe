@@ -25,3 +25,4 @@ handlers:
 
 - url: /.*
   script: bezplatnoe.application
+

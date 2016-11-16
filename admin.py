@@ -11,7 +11,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-class MainPage(webapp.RequestHandler):
+class AdminMainPage(webapp.RequestHandler):
   def get(self):
     q = Item.all().order('-created')
     data = {
@@ -23,7 +23,7 @@ class MainPage(webapp.RequestHandler):
     path = os.path.join(os.path.dirname(__file__), 'a_main.html')
     self.response.out.write(template.render(path, data))
 
-class CategoryPage(webapp.RequestHandler):
+class AdminCategoryPage(webapp.RequestHandler):
   def get(self):
     q = MainCategory.all().order('name');
     data = {
@@ -39,7 +39,7 @@ class CategoryPage(webapp.RequestHandler):
     save_category(self.request);
     self.redirect('/admin/category');
 
-class PostPage(webapp.RequestHandler):
+class AdminPostPage(webapp.RequestHandler):
   def get(self):
     q = SubCategory.all().order('main');
     data = {
@@ -55,7 +55,7 @@ class PostPage(webapp.RequestHandler):
     save_post(self.request);
     self.redirect('/admin/post');
 
-class UpdatePage(webapp.RequestHandler):
+class AdminUpdatePage(webapp.RequestHandler):
   def get(self, id):
     q = SubCategory.all().order('main');
     post = get_post(int(id));

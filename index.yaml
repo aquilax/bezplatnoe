@@ -1,0 +1,22 @@
+indexes:
+
+- kind: SubCategory
+  properties:
+  - name: main
+  - name: name
+
+- kind: Item
+  properties:
+  - name: main
+  - name: score
+    direction: desc
+  - name: created
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: sub
+  - name: score
+    direction: desc
+  - name: created
+    direction: desc

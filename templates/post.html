@@ -1,6 +1,6 @@
 <h2> <a href="/out/{{item.key.id}}">{{item.title}}</a></h2>
 {% if item.image %}<img src="{{item.image}}" alt="{{item.title}}" />{% endif %}
-<div class="text">{{item.text}}</div>
+<div class="text">{{ item.text|safe }}</div>
 <script type="text/javascript"><!--
 google_ad_client = "pub-5312778245695320";
 /* 468x60, created 9/22/10 */

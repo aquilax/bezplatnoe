@@ -92,9 +92,9 @@ class OutPage(webapp.RequestHandler):
     if (post):
       post.score = post.score + 1;
       post.put()
-      self.redirect(post.url);
+      self.redirect(str(post.url))
     else:
-      self.redirect('/');
+      self.redirect('/')
 
 class SearchPage(webapp.RequestHandler):
   def get(self):
@@ -137,6 +137,69 @@ class VotePage(webapp.RequestHandler):
     score = vote(ip, self.request);
     self.response.out.write('Рейтинг: '+str(score))
 
+class AdminMainPage(webapp.RequestHandler):
+  def get(self):
+    q = Item.all().order('-created')
+    data = {
+      'include': '',
+      'title': "Администрация",
+      'items': q.fetch(30),
+      'content': "templates/a_index.html",
+    }
+    path = os.path.join(os.path.dirname(__file__), 'a_main.html')
+    self.response.out.write(template.render(path, data))
+
+class AdminCategoryPage(webapp.RequestHandler):
+  def get(self):
+    q = MainCategory.all().order('name');
+    data = {
+      'main': q.fetch(100),
+      'include': '',
+      'title': "Администрация",
+      'content': "templates/a_category.html",
+    }
+    path = os.path.join(os.path.dirname(__file__), 'a_main.html')
+    self.response.out.write(template.render(path, data))
+
+  def post(self):
+    save_category(self.request);
+    self.redirect('/admin/category');
+
+class AdminPostPage(webapp.RequestHandler):
+  def get(self):
+    q = SubCategory.all().order('main');
+    data = {
+      'sc': q.fetch(100),
+      'include': '',
+      'title': "Администрация",
+      'content': "templates/a_post.html",
+    }
+    path = os.path.join(os.path.dirname(__file__), 'a_main.html')
+    self.response.out.write(template.render(path, data))
+
+  def post(self):
+    save_post(self.request);
+    self.redirect('/admin/post');
+
+class AdminUpdatePage(webapp.RequestHandler):
+  def get(self, id):
+    q = SubCategory.all().order('main');
+    post = get_post(int(id));
+    data = {
+      'sc': q.fetch(100),
+      'include': '',
+      'item': post,
+      'title': "Администрация",
+      'content': "templates/a_postupdate.html",
+    }
+    path = os.path.join(os.path.dirname(__file__), 'a_main.html')
+    self.response.out.write(template.render(path, data))
+
+  def post(self, id):
+    update_post(int(id), self.request);
+    self.redirect('/admin');
+
+
 application = webapp.WSGIApplication([('/', MainPage),
                                       ('/c/(\d+)/([\w\-]+)', CategoryPage),
                                       ('/sub/(\d+)/([\w\-]+)/([\w\-]+)', SubCategoryPage),
@@ -146,8 +209,8 @@ application = webapp.WSGIApplication([('/', MainPage),
                                       ('/forum', ForumPage),
                                       ('/feed', RssPage),
                                       ('/vote', VotePage),
-                                      ],
-                                     debug=False)
+                                     ], debug=False)
+
 
 def real_main():
     run_wsgi_app(application)
